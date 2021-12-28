@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import au.com.onaction.OnAction
+import au.com.onactionexample.components.home.HomeUI
 import au.com.onactionexample.ui.theme.OnActionExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,6 +23,11 @@ class MainActivity : ComponentActivity() {
             OnActionExampleTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
+
+
+                    var homeScreen = HomeUI()
+                    homeScreen.Home(name = "Welcome OnAction with Jetpack Compose")
+
                     var s by remember { mutableStateOf("") }
                     Greeting(s)
                     
