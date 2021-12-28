@@ -1,5 +1,6 @@
 package au.com.onactionexample.components.home
 
+import au.com.onaction.OnAction
 import au.com.onactionexample.components.home.data.Videos
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.launch
@@ -11,10 +12,10 @@ import java.io.IOException
 class HomeModel {
     private val client = OkHttpClient()
 
-    fun fetchVideos(url: String) = runBlocking {
+    fun fetchVideos() = runBlocking {
         launch {
             val request = Request.Builder()
-                .url(url)
+                .url(Services.VIDEOS_URL)
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
@@ -23,6 +24,7 @@ class HomeModel {
                     val gson = GsonBuilder().create()
                     val videos = gson.fromJson(response.body()?.string(), Videos::class.java)
                     println(videos)
+                    OnAction.doAction(Constants.GET_VIDEOS, videos)
                 }
             })
         }
@@ -36,7 +38,16 @@ class HomeModel {
 //            .await()
 //        return Json.decodeFromString(response)
 //    }
-    companion object Services {
-        private const val videosUrl = "https://my-json-server.typicode.com/kotlin-hands-on/kotlinconf-json/videos"
-    }
+
+    /// https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/08_Using_an_External_REST_API
+
+
+}
+
+object Services {
+    const val VIDEOS_URL = "https://my-json-server.typicode.com/kotlin-hands-on/kotlinconf-json/videos"
+}
+
+object Constants {
+    const val GET_VIDEOS = "GET_VIDEOS"
 }
