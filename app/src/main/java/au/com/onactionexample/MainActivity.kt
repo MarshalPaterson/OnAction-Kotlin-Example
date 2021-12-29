@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import au.com.onaction.OnAction
 import au.com.onactionexample.components.home.HomeUI
+import au.com.onactionexample.navigation.Navigation
 import au.com.onactionexample.ui.theme.OnActionExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,8 +26,9 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
 
 
-                    var homeScreen = HomeUI()
-                    homeScreen.Home(name = "Welcome OnAction with Jetpack Compose")
+//                    var homeScreen = HomeUI()
+//                    homeScreen.Home(name = "Welcome OnAction with Jetpack Compose")
+                    Navigation()
 
                     var s by remember { mutableStateOf("") }
                     Greeting(s)
@@ -39,7 +41,7 @@ class MainActivity : ComponentActivity() {
                         }
                     })
 
-                    ButtonDemo()
+//                    ButtonDemo()
                 }
             }
         }

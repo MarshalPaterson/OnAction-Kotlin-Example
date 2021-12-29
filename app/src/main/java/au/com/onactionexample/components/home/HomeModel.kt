@@ -22,7 +22,7 @@ class HomeModel {
                 override fun onFailure(call: Call, e: IOException) {}
                 override fun onResponse(call: Call, response: Response) {
                     val gson = GsonBuilder().create()
-                    val videos = gson.fromJson(response.body()?.string(), Videos::class.java)
+                    val videos = gson.fromJson(response.body?.string(), Videos::class.java)
                     println(videos)
                     OnAction.doAction(Constants.GET_VIDEOS, videos)
                 }

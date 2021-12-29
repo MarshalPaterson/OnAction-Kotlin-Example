@@ -1,22 +1,33 @@
 package au.com.onactionexample.components.home
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
 import au.com.onaction.OnAction
 import au.com.onactionexample.components.home.data.Video
+import au.com.onactionexample.navigation.Screen
 
-class HomeUI {
+//class HomeUI {
     @Composable
-    fun Home(name: String) {
+    fun HomeUI(navController: NavController) {
 
         var homeModel = HomeModel()
         homeModel.fetchVideos()
 
         Surface(color = MaterialTheme.colors.primary) {
-            Text(text = name)
+            Text(text = "Home")
+            Button(
+                onClick = {
+                    navController.navigate(Screen.DetailUI.args("text"))
+                },
+            ) {
+                Text(text = "GO")
+            }
 
             var videos by remember { mutableStateOf(listOf<Video>()) }
             ShowVideos(videos)
@@ -41,5 +52,6 @@ class HomeUI {
     @Composable
     fun ShowVideo(video: Video) {
         Text(text = "${video.title}!")
+        Text(text = "${video.speaker}!")
     }
-}
+//}
