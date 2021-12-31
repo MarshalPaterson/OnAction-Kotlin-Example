@@ -1,4 +1,4 @@
-package au.com.onactionexample.components.home.data
+package au.com.onactionexample.components.common.data
 
 data class Video(
     val id: Int,

@@ -1,8 +1,8 @@
 package au.com.onactionexample.navigation
 
 sealed class Screen(val route: String) {
-    object HomeUI : Screen("home_ui_screen")
-    object DetailUI : Screen("detail_ui_screen")
+    object HomeUi : Screen("home_ui_screen")
+    object DetailUi : Screen("detail_ui_screen")
 
     fun args(vararg args: String) = buildString {
         append(route)
