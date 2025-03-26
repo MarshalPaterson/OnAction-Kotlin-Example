@@ -1,4 +1,4 @@
-# OnActionExample
+# OnAction-Kotlin-Example
 
 This example show best practices for OnAction in a Jetpack Compose Android Kotlin applicaiton.
 
