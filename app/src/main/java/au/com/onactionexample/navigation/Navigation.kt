@@ -21,9 +21,7 @@ fun Navigation() {
         }
 
         composable(
-            // /{name} must
-            // ?name={name} optional
-            route = Screen.DetailUi.route + "/{name}",
+            route = Screen.DetailUi.route + "/{url}",
             arguments = listOf(
                 navArgument("name") {
                     type = NavType.StringType
@@ -32,7 +30,7 @@ fun Navigation() {
                 }
             )
         ) { entry ->
-            DetailUi(text = entry.arguments!!.getString("name")!!)
+            DetailUi(url = entry.arguments!!.getString("url")!!)
         }
     }
 }

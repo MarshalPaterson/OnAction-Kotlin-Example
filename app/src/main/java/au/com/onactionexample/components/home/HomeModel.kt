@@ -23,6 +23,8 @@ class HomeModel {
                 override fun onResponse(call: Call, response: Response) {
                     val gson = GsonBuilder().create()
                     val videos = gson.fromJson(response.body?.string(), Videos::class.java)
+
+                    // The Service call has returned the data, broadcast to any listeners
                     OnAction.doAction(Constants.GET_VIDEOS, videos)
                 }
             })
